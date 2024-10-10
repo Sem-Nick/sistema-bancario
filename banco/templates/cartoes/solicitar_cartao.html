@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'dashboard' %}
+<h1 class="my-4">Criar Cartão</h1>
+
+<form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    
+    <div class="row">
+        <div class="form-group col-md-3">
+            <label for="id_empresa_responsavel">Empresa</label>
+            <input type="text" class="form-control {% if form.empresa_responsavel.errors %}is-invalid{% endif %}" 
+                   id="id_empresa_responsavel" name="empresa_responsavel" value="{{ form.empresa_responsavel.value|default_if_none:'' }}" maxlength="11" required>
+            {% if form.empresa_responsavel.errors %}
+            <div class="invalid-feedback">{{ form.empresa_responsavel.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="id_cliente">Cliente</label>
+            <input type="text" class="form-control {% if form.cliente.errors %}is-invalid{% endif %}" 
+                   id="id_cliente" name="cliente" value="{{ form.cliente.value|default_if_none:'' }}" maxlength="50" required>
+            {% if form.cliente.errors %}
+            <div class="invalid-feedback">{{ form.cliente.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="id_limite">Limite</label>
+            <input type="number" class="form-control {% if form.limite.errors %}is-invalid{% endif %}" 
+                   id="id_limite" name="nome" value="{{ form.limite.value|default_if_none:'' }}" maxlength="4" required>
+            {% if form.limite.errors %}
+            <div class="invalid-feedback">{{ form.limite.errors }}</div>
+            {% endif %}
+        </div>
+
+    </div>
+    <br>
+    <!-- Botões -->
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'listar_cartoes' %}" class="btn btn-secondary ml-2">Voltar</a>
+</form>
+
+{% endblock %}

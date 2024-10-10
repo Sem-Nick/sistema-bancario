@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'dashboard' %}
+<h1 class="my-4">Criar emprestimo</h1>
+
+<form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    
+    <div class="row">
+        <div class="form-group col-md-3">
+            <label for="id_cliente">Cliente</label>
+            <input type="text" class="form-control {% if form.cliente.errors %}is-invalid{% endif %}" 
+                   id="id_cliente" name="cliente" value="{{ form.cliente.value|default_if_none:'' }}" maxlength="50" required>
+            {% if form.cliente.errors %}
+            <div class="invalid-feedback">{{ form.cliente.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="id_valorEmprestimo">Valor do Empréstimo</label>
+            <input type="text" class="form-control {% if form.valorEmprestimo.errors %}is-invalid{% endif %}" 
+                   id="id_valorEmprestimo" name="valorEmprestimo" value="{{ form.valorEmprestimo.value|default_if_none:'' }}" maxlength="50" required>
+            {% if form.valorEmprestimo.errors %}
+            <div class="invalid-feedback">{{ form.valorEmprestimo.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="id_prazo">Data</label>
+            <input type="date" class="form-control {% if form.prazo.errors %}is-invalid{% endif %}" 
+                   id="id_prazo" name="prazo" value="{{ form.prazo.value|default_if_none:'' }}" maxlength="4" required>
+            {% if form.prazo.errors %}
+            <div class="invalid-feedback">{{ form.prazo.errors }}</div>
+            {% endif %}
+        </div>
+
+    </div>
+    <br>
+    <!-- Botões -->
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'solicitar_emprestimo' %}" class="btn btn-secondary ml-2">Voltar</a>
+</form>
+
+{% endblock %}

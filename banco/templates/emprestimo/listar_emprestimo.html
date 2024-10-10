@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'dashboard' %}
+<h1 class="my-4">Lista de Emprestimos</h1>
+<a href="{% url 'solicitar_emprestimo' %}" class="btn btn-primary mb-3">Solicitar Emprestimo</a>
+<a href="{% url 'listar_clientes' %}" class="btn btn-primary mb-3">Verificar Cliente</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      
+      <th>Cliente</th>
+      <th>Valor do emprestimo</th>
+      <th>Prazo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for emprestimo in emprestimos %}
+    <tr>
+      <td>{{ emprestimo.cliente }}</td>
+      <td>{{ emprestimo.valorEmprestimo }}</td>
+      <td>{{ emprestimo.prazo }}</td>
+      <td>
+        <!-- Botão para deletar com confirmação -->
+        <form action="{% url 'cancelar_emprestimo' emprestimo.id %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja cancelar?');">Cancelar</button>
+        </form>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="3">Nenhum emprestimo solicitado.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
