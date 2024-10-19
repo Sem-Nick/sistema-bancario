@@ -20,7 +20,7 @@ urlpatterns = [
     path('emprestimo/novo/', views.solicitar_emprestimo, name='solicitar_emprestimo'),
     path('emprestimo/cancelar/<int:id>/', views.cancelar_emprestimo, name='cancelar_emprestimo'),
 
-    path('login/', auth_views.LoginView.as_view(template_name='usuarios/login.html'), name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='usuario/login.html'), name='login'),
     
     # URL para fazer logout
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),

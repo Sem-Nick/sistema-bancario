@@ -11,7 +11,7 @@ class ClienteForm(forms.ModelForm):
 class CartaoForm(forms.ModelForm):
     class Meta:
         model = Cartao
-        fields = ['empresa_responsavel', 'cliente', 'limite', 'fatura']
+        fields = ['empresa_responsavel', 'cliente', 'limite']
 
 class EmprestimoForm(forms.ModelForm):
     class Meta:

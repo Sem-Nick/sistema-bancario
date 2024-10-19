@@ -2,24 +2,24 @@
 {% load static %}
 {% block 'dashboard' %}
 <h1 class="my-4">Lista de Cartões</h1>
-<a href="{% url 'solicitar_cartao' %}" class="btn btn-primary mb-3">Solicitar Cartão</a>
-<a href="{% url 'exportar_cartoes_pdf' %}" target="_blank" class="btn btn-primary mb-3">Exportar PDF</a>
+<a href="{% url 'solicitar_cartao' %}" class="btn colorprimarybtn2 mb-3">Solicitar Cartão</a>
+<a href="{% url 'exportar_cartoes_pdf' %}" target="_blank" class="btn colorprimarybtn2 mb-3">Exportar PDF</a>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Empresa</th>
       <th>Cliente</th>
       <th>Limite</th>
-      <th>Fatura</th>
+
     </tr>
   </thead>
   <tbody>
-    {% for cartao in cartao %}
+    {% for cartao in cartoes %}
     <tr>
       <td>{{ cartao.empresa_responsavel }}</td>
       <td>{{ cartao.cliente }}</td>
       <td>{{ cartao.limite }}</td>
-      <td>{{ cartao.fatura }}</td>
+
       <td>
         <a href="{% url 'solicitar_limite' cartao.id %}" class="btn btn-sm btn-warning">Solicitar Limite</a>
         <!-- Botão para deletar com confirmação -->

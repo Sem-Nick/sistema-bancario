@@ -2,13 +2,12 @@
 {% load static %}
 {% block 'dashboard' %}
 <h1 class="my-4">Lista de Clientes</h1>
-<a href="{% url 'criar_clientes' %}" class="btn btn-primary mb-3">Adicionar Cliente</a>
-<a href="{% url 'exportar_clientes_pdf' %}" target="_blank" class="btn btn-primary mb-3">Exportar PDF</a>
+<a href="{% url 'criar_clientes' %}" class="btn colorprimarybtn2 mb-3">Adicionar Cliente</a>
+<a href="{% url 'exportar_clientes_pdf' %}" target="_blank" class="btn colorprimarybtn2 mb-3">Exportar PDF</a>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Nome</th>
       <th>CPF</th>
       <th>Ações</th>
@@ -17,7 +16,6 @@
   <tbody>
     {% for cliente in clientes %}
     <tr>
-      <td>{{ cliente.id }}</td>
       <td>{{ cliente.nome }}</td>
       <td>{{ cliente.cpf }}</td>
       <td>

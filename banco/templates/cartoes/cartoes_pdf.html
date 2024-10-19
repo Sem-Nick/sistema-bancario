@@ -55,10 +55,8 @@
         th:nth-child(2),
         td:nth-child(2) {
             width: 40%;
-            /* Aumenta a largura da coluna Nome */
         }
 
-        /* Ajustar margens da página */
         .container {
             width: 100%;
 
@@ -68,7 +66,7 @@
 
 <body>
     <div class="info">
-        <img src="logo.jpeg">
+        <img src="/templates/static/img/logo.jpeg">
         <div>Endereço: Rua Cavalcante, 321</div>
         <div>Teresina, Piauí</div>
         <div>Telefone: (12) 3456-7890</div>
@@ -84,10 +82,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for cartoes in cartao %}
+                {% for cartao in cartoes %}
                 <tr>
-                    <td>{{ cartao.Cliente }}</td>
-                    <td>{{ cartao.Empresa }}</td>
+                    <td>{{ cartao.cliente.nome }}</td>
+                    <td>{{ cartao.empresa_responsavel }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

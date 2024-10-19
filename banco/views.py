@@ -70,10 +70,10 @@ def exportar_clientes_pdf(request):
 # @login_required
 def exportar_cartao_pdf(request):
     # Buscando todos os usuários
-    cartao = Cartao.objects.all()
+    cartoes = Cartao.objects.all()
 
     # Renderizando o template HTML com os dados dos usuários
-    html_string = render_to_string('cartoes/cartoes_pdf.html', {'cartao': cartao})
+    html_string = render_to_string('cartoes/cartoes_pdf.html', {'cartoes': cartoes})
 
     # Criando a resposta HTTP para o PDF
     response = HttpResponse(content_type='application/pdf')
@@ -94,7 +94,9 @@ def solicitar_cartao(request):
     if request.method == "POST":
         form = CartaoForm(request.POST)
         if form.is_valid():
-            form.save()
+            cartao = form.save()
+            print('teste1')
+            print(cartao)
             return redirect('listar_cartoes')
     else:
         form = CartaoForm()

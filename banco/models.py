@@ -10,11 +10,10 @@ class Cliente(models.Model):
 class Cartao(models.Model):
     empresa_responsavel = models.TextField()
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    limite = models.CharField(max_length=15)
-    fatura = models.DecimalField(max_digits=4, decimal_places=2)
+    limite = models.DecimalField(max_digits=4, decimal_places=2)
 
     def __str__(self): 
-        return f"{self.cliente} - {self.limite} - {self.fatura}"
+        return f"{self.cliente} - {self.limite}"
     
 class Emprestimo(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
